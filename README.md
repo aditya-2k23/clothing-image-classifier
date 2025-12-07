@@ -84,3 +84,8 @@ X_test = X_test.reshape((len(X_test), -1))
 - Performance metrics such as accuracy, precision, recall, and F1-score are calculated to assess model performance.
 - Confusion matrices and classification reports are generated for detailed analysis.
 - See the respective Jupyter Notebooks for implementation details.
+
+## Conclusion
+
+- The CNN model generally outperforms traditional models like Logistic Regression and Random Forest in image classification tasks.
+- Further improvements can be made by tuning hyperparameters, using data augmentation, and experimenting with deeper architectures.
