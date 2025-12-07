@@ -78,40 +78,9 @@ X_train = X_train.reshape((len(X_train), -1)) # -1 -> 28*28 = 784
 X_test = X_test.reshape((len(X_test), -1))
 ```
 
-### Train the Model
+## Model Training and Evaluation
 
-- Train the Logistic Regression model using the processed training data.
-
-```py
-model = LogisticRegression(max_iter=1000, n_jobs=-1)
-model.fit(X_train, y_train)
-```
-
-- max_iter=1000 allows the model to run for a maximum of 1000 iterations.
-- n_jobs=-1 allows the model to use all available CPU cores for training, speeding up the process.
-
-### Evaluate the Model
-
-- Evaluate the model's performance on the test dataset.
-
-```py
-y_pred = model.predict(X_test)
-
-test_accuracy = accuracy_score(y_test, y_pred)
-print(f"Test Accuracy: {test_accuracy * 100:.2f}%")
-
-print("Classification Report:")
-print(classification_report(y_test, y_pred, target_names=class_names))
-
-print("Confusion Matrix:")
-plt.figure(figsize=(10, 8))
-cm = confusion_matrix(y_test, y_pred)
-sb.heatmap(cm, annot=True, fmt="d", cmap="Blues",
-           xticklabels=class_names,
-           yticklabels=class_names)
-plt.ylabel("Actual")
-plt.xlabel("Predicted")
-plt.title("Confusion Matrix")
-plt.tight_layout()
-plt.show()
-```
+- Each model is trained on the training set and evaluated on the test set.
+- Performance metrics such as accuracy, precision, recall, and F1-score are calculated to assess model performance.
+- Confusion matrices and classification reports are generated for detailed analysis.
+- See the respective Jupyter Notebooks for implementation details.
