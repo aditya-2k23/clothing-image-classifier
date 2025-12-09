@@ -93,7 +93,8 @@ function showPreview(file) {
 
 predictBtn.onclick = async () => {
   if (!selectedFile) {
-    alert("Please upload an image first.");
+    statusText.textContent = "Please upload an image first.";
+    statusMessage.classList.add("show", "error");
     return;
   }
 
