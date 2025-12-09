@@ -2,9 +2,14 @@ from flask import Flask, render_template, request, jsonify
 import numpy as np
 import joblib
 import keras
+import os
 from utils import preprocess_image
 
 app = Flask(__name__)
+
+# Configuration
+app.config['ENV'] = os.getenv('FLASK_ENV', 'production')
+app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
 
 # Load models
 cnn = keras.models.load_model("models/cnn_model.keras")
@@ -52,4 +57,12 @@ def predict():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Only use Flask's built-in server for development
+    # For production, use a WSGI server like gunicorn:
+    # gunicorn -w 4 -b 0.0.0.0:8000 app:app
+    debug_mode = app.config['DEBUG']
+    app.run(
+        host=os.getenv('FLASK_HOST', '127.0.0.1'),
+        port=int(os.getenv('FLASK_PORT', 5000)),
+        debug=debug_mode
+    )
