@@ -89,3 +89,20 @@ X_test = X_test.reshape((len(X_test), -1))
 
 - The CNN model generally outperforms traditional models like Logistic Regression and Random Forest in image classification tasks.
 - Further improvements can be made by tuning hyperparameters, using data augmentation, and experimenting with deeper architectures.
+- This project serves as a foundation for building more complex image classification systems in the future.
+
+## Results Summary
+
+| Model | Test Accuracy | Notes |
+|-------|--------------|-------|
+| Logistic Regression | 84.40% | Linear model, struggles with complex pixel patterns |
+| Random Forest | 87.64% | Captures non-linearity but not spatial structure |
+| CNN | 91.23% | Learns shapes/textures → best performance |
+
+The results clearly show that deep learning (CNN) significantly outperforms traditional ML models on image data.
+
+## References
+
+- [Fashion-MNIST Dataset](https://github.com/zalandoresearch/fashion-mnist)
+- [Scikit-learn Documentation](https://scikit-learn.org/stable/documentation.html)
+- [TensorFlow/Keras Documentation](https://www.tensorflow.org/api_docs)
