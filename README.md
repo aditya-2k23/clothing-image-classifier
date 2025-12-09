@@ -93,16 +93,22 @@ X_test = X_test.reshape((len(X_test), -1))
 
 ## Results Summary
 
-| Model | Test Accuracy | Notes |
-|-------|--------------|-------|
-| Logistic Regression | 84.40% | Linear model, struggles with complex pixel patterns |
-| Random Forest | 87.64% | Captures non-linearity but not spatial structure |
-| CNN | 91.23% | Learns shapes/textures → best performance |
+| Model | Test Accuracy | F1 Macro | Training Time (s) | Size (KB) | Notes |
+|-------|---------------|----------|-------------------|-------|-------|
+| Logistic Regression | 84.40% | 0.84 | 174.66 | 62.18 | Linear model, struggles with complex pixel patterns |
+| Random Forest | 87.64% | 0.87 | 41.81 | 21725.46 | Captures non-linearity but not spatial structure |
+| Convolutional Neural Network | 91.07% | 0.91 | 207.18 | 2673.61 | Learns shapes/textures → best performance |
 
 The results clearly show that deep learning (CNN) significantly outperforms traditional ML models on image data.
+
+![Model Comparison](images/model_comparison.png)
 
 ## References
 
 - [Fashion-MNIST Dataset](https://github.com/zalandoresearch/fashion-mnist)
 - [Scikit-learn Documentation](https://scikit-learn.org/stable/documentation.html)
 - [TensorFlow/Keras Documentation](https://www.tensorflow.org/api_docs)
+- [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
+- [Seaborn Documentation](https://seaborn.pydata.org/)
+- [NumPy Documentation](https://numpy.org/doc/)
+- [Jupyter Notebook Documentation](https://jupyter.org/documentation)
