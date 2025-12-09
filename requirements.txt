@@ -6,3 +6,6 @@ seaborn
 tensorflow
 jupyter
 joblib
+flask
+keras
+Pillow
