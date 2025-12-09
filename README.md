@@ -18,6 +18,10 @@ This repository contains machine learning models to classify clothing images int
 - Matplotlib
 - Seaborn
 - Jupyter Notebook
+- joblib (for model serialization)
+- Flask (for web application)
+- Plotly (for interactive visualizations)
+- Pillow (for image processing)
 
 ## Problem Statement and Objective
 
@@ -102,6 +106,39 @@ X_test = X_test.reshape((len(X_test), -1))
 The results clearly show that deep learning (CNN) significantly outperforms traditional ML models on image data.
 
 ![Model Comparison](images/model_comparison.png)
+
+## Web Application
+
+An interactive Flask-based web application has been developed to allow users to classify their own clothing images using all three trained models simultaneously.
+
+### Features
+
+- **Interactive Upload Interface**: Drag-and-drop or click-to-browse image upload functionality
+- **Real-time Preprocessing Visualization**: View the 28×28 grayscale image that the models actually process
+- **Multi-Model Predictions**: Get predictions from CNN, Random Forest, and Logistic Regression simultaneously
+- **Confidence Distribution Charts**: Interactive Plotly visualizations showing confidence scores across all 10 categories for each model
+- **Responsive Design**: Modern, mobile-friendly UI with smooth animations and transitions
+- **Dark Mode Support**: Toggle between light and dark themes for comfortable viewing
+- **Educational Content**: Information about the models, dataset, and tips for best results
+
+### See the App in Action
+
+Check out the live demo: [Clothing Image Classifier Web App](https://clothing-image-classifier.example.com)
+
+### Usage
+
+1. Upload a clothing image (preferably on a simple background)
+2. Click "Analyze Image" to run predictions
+3. View the preprocessed 28×28 image to see what the models process
+4. Compare predictions and confidence scores from all three models
+5. Explore the confidence distribution charts to understand model behavior
+
+### Technologies Used
+
+- **Backend**: Flask, TensorFlow/Keras, Scikit-learn
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Visualization**: Plotly.js for interactive charts
+- **UI Framework**: Bootstrap 5 with custom styling
 
 ## References
 
