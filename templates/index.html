@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion MNIST Classifier</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+  <header class="hero-header">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+    <h1><i class="fas fa-tshirt me-2"></i>Fashion MNIST Classifier</h1>
+    <p>Upload a clothing image and let our AI models predict what type of garment it is using three different machine
+      learning approaches</p>
+    <a href="#upload-section" class="hero-cta-btn">
+      <i class="fas fa-upload me-2"></i>Try It Now
+    </a>
+  </header>
+
+  <main class="main-container">
+
+    <div class="info-card">
+      <h3 class="section-title"><i class="fas fa-brain"></i>About the Models</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <i class="fas fa-network-wired"></i>
+          <h6>CNN (91.07% acc)</h6>
+          <p>Deep learning model that learns spatial patterns and textures from images</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-tree"></i>
+          <h6>Random Forest (87.64% acc)</h6>
+          <p>Ensemble of decision trees capturing non-linear pixel relationships</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-chart-line"></i>
+          <h6>Logistic Regression (84.40% acc)</h6>
+          <p>Linear classifier providing fast baseline predictions</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="categories-section">
+      <h3 class="section-title text-center justify-content-center"><i class="fas fa-tags"></i>Supported Categories</h3>
+      <p class="text-center text-muted mb-4">The models can classify images into these 10 fashion categories:</p>
+      <div class="category-tags">
+        <span class="category-tag"><i class="fas fa-tshirt"></i> T-shirt/Top</span>
+        <span class="category-tag"><i class="fas fa-user"></i> Trouser</span>
+        <span class="category-tag"><i class="fas fa-mitten"></i> Pullover</span>
+        <span class="category-tag"><i class="fas fa-person-dress"></i> Dress</span>
+        <span class="category-tag"><i class="fas fa-vest-patches"></i> Coat</span>
+        <span class="category-tag"><i class="fas fa-umbrella-beach"></i> Sandal</span>
+        <span class="category-tag"><i class="fas fa-user-tie"></i> Shirt</span>
+        <span class="category-tag"><i class="fas fa-shoe-prints"></i> Sneaker</span>
+        <span class="category-tag"><i class="fas fa-bag-shopping"></i> Bag</span>
+        <span class="category-tag"><i class="fas fa-hiking"></i> Ankle Boot</span>
+      </div>
+    </div>
+
+    <div class="sample-images-section">
+      <h3 class="section-title text-center justify-content-center"><i class="fas fa-images"></i>Sample Dataset Images
+      </h3>
+      <p class="text-center text-muted mb-4">Here are some sample images from the Fashion-MNIST dataset used to train
+        our models:</p>
+      <div class="sample-image-container">
+        <img src="{{ url_for('static', filename='images/sample_clothing_images.png') }}"
+          alt="Sample clothing images from Fashion-MNIST dataset" class="sample-image" />
+      </div>
+    </div>
+
+    <div class="guidelines-card">
+      <h3 class="section-title"><i class="fas fa-lightbulb"></i>Tips for Best Results</h3>
+      <p class="text-muted mb-4">Follow these simple tips to get the most accurate predictions:</p>
+
+      <div class="guidelines-grid">
+        <div class="guideline-item do">
+          <div class="guideline-header">
+            <i class="fas fa-check-circle"></i>
+            <h6>Single Item Only</h6>
+          </div>
+          <p>Upload a photo with just one clothing item. Place it on a flat surface rather than wearing it.</p>
+        </div>
+
+        <div class="guideline-item do">
+          <div class="guideline-header">
+            <i class="fas fa-check-circle"></i>
+            <h6>Plain Background</h6>
+          </div>
+          <p>Use a solid white or black background. Avoid patterns or busy surfaces.</p>
+        </div>
+
+        <div class="guideline-item do">
+          <div class="guideline-header">
+            <i class="fas fa-check-circle"></i>
+            <h6>Good Lighting</h6>
+          </div>
+          <p>Make sure the item is well-lit and clearly visible. Avoid dark or overexposed photos.</p>
+        </div>
+
+        <div class="guideline-item do">
+          <div class="guideline-header">
+            <i class="fas fa-check-circle"></i>
+            <h6>Center the Item</h6>
+          </div>
+          <p>Position the clothing item in the center and fill most of the frame.</p>
+        </div>
+      </div>
+
+      <div class="processing-info">
+        <h5><i class="fas fa-cogs me-2"></i>How Your Image is Processed</h5>
+        <p>When you upload an image, the system automatically:</p>
+        <ul>
+          <li><i class="fas fa-palette"></i> Converts it to grayscale (black & white)</li>
+          <li><i class="fas fa-compress-alt"></i> Resizes it to 28 × 28 pixels</li>
+          <li><i class="fas fa-adjust"></i> Adjusts the background for better detection</li>
+          <li><i class="fas fa-sliders-h"></i> Normalizes the image for prediction</li>
+        </ul>
+      </div>
+
+      <div class="avoid-section">
+        <h5><i class="fas fa-exclamation-triangle me-2"></i>What to Avoid</h5>
+        <div class="avoid-grid">
+          <span class="avoid-item"><i class="fas fa-times"></i> Clothing worn by a person</span>
+          <span class="avoid-item"><i class="fas fa-times"></i> Busy or patterned backgrounds</span>
+          <span class="avoid-item"><i class="fas fa-times"></i> Photos taken from far away</span>
+          <span class="avoid-item"><i class="fas fa-times"></i> Cropped or cut-off images</span>
+          <span class="avoid-item"><i class="fas fa-times"></i> Blurry or dark photos</span>
+          <span class="avoid-item"><i class="fas fa-times"></i> Multiple items in one photo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="upload-card" id="upload-section">
+      <h3 class="section-title"><i class="fas fa-cloud-upload-alt"></i>Upload Image</h3>
+
+      <div class="upload-content">
+        <div id="drop-area">
+          <div class="drop-icon">
+            <i class="fas fa-image"></i>
+          </div>
+          <h5>Drag & Drop your image here</h5>
+          <p>or click anywhere to browse files</p>
+          <input type="file" id="image" name="image" accept="image/*" hidden>
+        </div>
+
+        <div class="preview-container" id="preview-container">
+          <p class="text-muted mb-3"><i class="fas fa-check-circle text-success me-2"></i>Image ready for prediction</p>
+          <img id="preview" alt="Preview" />
+          <div class="file-info" id="file-info"></div>
+        </div>
+      </div>
+
+      <div class="status-message processing" id="status-message">
+        <i class="fas fa-cog fa-spin"></i>
+        <span id="status-text">Processing your image through 3 ML models...</span>
+      </div>
+
+      <div class="text-center mt-4">
+        <button id="predictBtn" class="btn-predict">
+          <i class="fas fa-magic"></i>
+          <span id="btn-text">Analyze Image</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="results-card" id="results-card">
+      <h3 class="section-title"><i class="fas fa-poll"></i>Prediction Results</h3>
+
+      <div class="model-results" id="model-results"></div>
+
+      <div class="charts-section">
+        <h5 class="mb-3"><i class="fas fa-chart-bar me-2 text-primary"></i>Confidence Distribution</h5>
+        <div class="chart-container" id="cnn_chart"></div>
+        <div class="chart-container" id="rf_chart"></div>
+        <div class="chart-container" id="log_chart"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p style="font-weight: bold;" class="text-muted">Powered by TensorFlow, Scikit-learn & Flask</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
