@@ -23,7 +23,7 @@ def index():
 @app.route("/predict", methods=["POST"])
 def predict():
     file = request.files["image"]
-    img = preprocess_image(file)
+    img, preview_img = preprocess_image(file)
 
     # ----- CNN -----
     cnn_probs = cnn.predict(img)[0] # type: ignore
@@ -47,7 +47,8 @@ def predict():
         "rf_probs": rf_probs.tolist(),
         "log_pred": log_pred,
         "log_probs": log_probs.tolist(),
-        "labels": labels
+        "labels": labels,
+        "preview_img": preview_img
     })
 
 if __name__ == "__main__":

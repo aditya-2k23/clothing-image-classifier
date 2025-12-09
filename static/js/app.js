@@ -129,6 +129,9 @@ predictBtn.onclick = async () => {
     const rfConf = (Math.max(...data.rf_probs) * 100).toFixed(1);
     const logConf = (Math.max(...data.log_probs) * 100).toFixed(1);
 
+    // Display preprocessed image
+    document.getElementById("preprocessed-img").src = `data:image/png;base64,${data.preview_img}`;
+
     document.getElementById("model-results").innerHTML = `
       <div class="model-result-item cnn">
         <div class="model-name">Convolutional Neural Network</div>
