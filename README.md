@@ -4,9 +4,9 @@ This repository contains machine learning models to classify clothing images int
 
 ## Models Implemented
 
-1. [Logistic Regression](LogisticRegression.ipynb)
-2. [Random Forest Classifier](RandomForest.ipynb)
-3. [Convolutional Neural Network (CNN)](CNN.ipynb)
+1. [Logistic Regression](notebooks/LogisticRegression.ipynb)
+2. [Random Forest Classifier](notebooks/RandomForest.ipynb)
+3. [Convolutional Neural Network (CNN)](notebooks/CNN.ipynb)
 
 ### Requirements
 
