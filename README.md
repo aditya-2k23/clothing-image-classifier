@@ -123,7 +123,7 @@ An interactive Flask-based web application has been developed to allow users to 
 
 ### See the App in Action
 
-Check out the live demo: [Clothing Image Classifier Web App](https://clothing-image-classifier.example.com)
+Check out the live demo: [Clothing Image Classifier Web App](https://clothing-classifier-562630078086.asia-south1.run.app/)
 
 ### Usage
 

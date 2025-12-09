@@ -56,13 +56,7 @@ def predict():
         "preview_img": preview_img
     })
 
+
 if __name__ == "__main__":
-    # Only use Flask's built-in server for development
-    # For production, use a WSGI server like gunicorn:
-    # gunicorn -w 4 -b 0.0.0.0:8000 app:app
-    debug_mode = app.config['DEBUG']
-    app.run(
-        host=os.getenv('FLASK_HOST', '127.0.0.1'),
-        port=int(os.getenv('FLASK_PORT', 5000)),
-        debug=debug_mode
-    )
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
