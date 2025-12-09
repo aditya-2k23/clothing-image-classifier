@@ -15,9 +15,8 @@ def preprocess_image(file):
     # Resize
     img = img.resize((28, 28), Image.Resampling.LANCZOS)
 
-    # For model
+    # For model - normalize to [0, 1] range
     arr = np.array(img)
-    arr = 255 - arr
     arr = arr / 255.0
     arr = arr.reshape(1, 28, 28, 1)
 
