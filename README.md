@@ -84,3 +84,31 @@ X_test = X_test.reshape((len(X_test), -1))
 - Performance metrics such as accuracy, precision, recall, and F1-score are calculated to assess model performance.
 - Confusion matrices and classification reports are generated for detailed analysis.
 - See the respective Jupyter Notebooks for implementation details.
+
+## Conclusion
+
+- The CNN model generally outperforms traditional models like Logistic Regression and Random Forest in image classification tasks.
+- Further improvements can be made by tuning hyperparameters, using data augmentation, and experimenting with deeper architectures.
+- This project serves as a foundation for building more complex image classification systems in the future.
+
+## Results Summary
+
+| Model | Test Accuracy | F1 Macro | Training Time (s) | Size (KB) | Notes |
+|-------|---------------|----------|-------------------|-------|-------|
+| Logistic Regression | 84.40% | 0.84 | 174.66 | 62.18 | Linear model, struggles with complex pixel patterns |
+| Random Forest | 87.64% | 0.87 | 41.81 | 21725.46 | Captures non-linearity but not spatial structure |
+| Convolutional Neural Network | 91.07% | 0.91 | 207.18 | 2673.61 | Learns shapes/textures → best performance |
+
+The results clearly show that deep learning (CNN) significantly outperforms traditional ML models on image data.
+
+![Model Comparison](images/model_comparison.png)
+
+## References
+
+- [Fashion-MNIST Dataset](https://github.com/zalandoresearch/fashion-mnist)
+- [Scikit-learn Documentation](https://scikit-learn.org/stable/documentation.html)
+- [TensorFlow/Keras Documentation](https://www.tensorflow.org/api_docs)
+- [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
+- [Seaborn Documentation](https://seaborn.pydata.org/)
+- [NumPy Documentation](https://numpy.org/doc/)
+- [Jupyter Notebook Documentation](https://jupyter.org/documentation)
