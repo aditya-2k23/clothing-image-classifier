@@ -2,6 +2,8 @@
 
 This repository contains machine learning models to classify clothing images into various categories. The models are trained and evaluated using a dataset of labeled clothing images. We are using the [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) dataset (clothing images) for this purpose.
 
+See the app live here deployed on Google Cloud: [Fashion MNIST Classifier](https://clothing-classifier-562630078086.asia-south1.run.app/)
+
 ## Models Implemented
 
 1. [Logistic Regression](notebooks/LogisticRegression.ipynb)
